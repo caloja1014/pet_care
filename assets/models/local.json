@@ -1,0 +1,11 @@
+{
+    "id": 1,
+    "name": "",
+    "latitude": -1111,
+    "longitude": -1111,
+    "description": "",
+    "isVeterinary": false,
+    "smallDescription": "",
+    "inventory":["",""],
+    "services": ["",""]
+}
