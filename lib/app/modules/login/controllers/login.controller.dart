@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pet_care/app/widgets/register_avatar.widget.dart';
 import 'package:pet_care/config/config.dart' as config;
 
 class LoginController extends GetxController {
@@ -34,24 +35,24 @@ class LoginController extends GetxController {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 80,
-                child: CircleAvatar(
-                  radius: 70,
-                  child: Image.asset(
-                    ENV["ASSETS"]['IMAGES']['OWNER'],
-                     width: 50,
-                  height: 50,
-                  ),
-                ),
+              RegisterAvatar(
+                height: Get.height,
+                name: ENV["ASSETS"]['IMAGES']['OWNER'],
+                text: 'Dueño',
+                onTap: () {
+                  print('Dueño');
+                },
               ),
-              CircleAvatar(
-                radius: 80,
-                child: Image.asset(
-                  ENV["ASSETS"]['IMAGES']['PET_SHOP'],
-                  width: 50,
-                  height: 50,
-                ),
+              const SizedBox(
+                height: 30,
+              ),
+              RegisterAvatar(
+                height: Get.height,
+                name: ENV["ASSETS"]['IMAGES']['PET_SHOP'],
+                text: 'Local o Veterinaria',
+                onTap: () {
+                  print('Local o Veterinaria');
+                },
               ),
             ],
           ),
