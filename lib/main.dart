@@ -32,6 +32,39 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: const Color.fromARGB(25, 0, 0, 0),
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          buttonTheme: const ButtonThemeData(
+            buttonColor: Color.fromRGBO(26, 192, 198, 1),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+                textStyle: const TextStyle(
+                  fontSize: 15,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+                primary: const Color.fromRGBO(26, 192, 198, 1),
+                minimumSize: const Size(180, 50),
+                // fixedSize: const Size(1200, 50),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                elevation: 4),
+          ),
+          inputDecorationTheme: const InputDecorationTheme(
+            filled: true,
+            fillColor: Colors.white,
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.white,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Color.fromRGBO(26, 192, 198, 0.42),
+              ),
+            ),
+            hintStyle: TextStyle(color: Color.fromRGBO(26, 192, 198, 0.42)),
+          ),
         ),
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
