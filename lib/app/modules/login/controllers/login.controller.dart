@@ -25,6 +25,7 @@ class LoginController extends GetxController {
 
   displayRegisterType(BuildContext context) {
     showDialog(
+      barrierColor: Colors.black87,
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(

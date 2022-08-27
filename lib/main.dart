@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         title: 'Pet Care',
         theme: ThemeData(
           scaffoldBackgroundColor: const Color.fromARGB(25, 0, 0, 0),
-          primarySwatch: MaterialColor(0xFF1AC0C6, color),
+          primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           buttonTheme: const ButtonThemeData(
             buttonColor: Color(0xFF1AC0C6),
