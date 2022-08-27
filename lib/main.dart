@@ -10,13 +10,24 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   final ENV = config.ENV;
-  const MyApp({Key? key}) : super(key: key);
-
+  MyApp({Key? key}) : super(key: key);
+  Map<int, Color> color = {
+    50: const Color.fromRGBO(26, 192, 198, .5),
+    100: const Color.fromRGBO(26, 192, 198, 1),
+    200: const Color.fromRGBO(26, 190, 190, 1),
+    300: const Color.fromRGBO(26, 192, 198, 1),
+    400: const Color.fromRGBO(26, 192, 198, 1),
+    500: const Color.fromRGBO(26, 192, 198, 1),
+    600: const Color.fromRGBO(26, 192, 198, 1),
+    700: const Color.fromRGBO(26, 192, 198, 1),
+    800: const Color.fromRGBO(26, 192, 198, 1),
+    900: const Color.fromRGBO(26, 192, 198, 1),
+  };
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,10 +41,10 @@ class MyApp extends StatelessWidget {
         title: 'Pet Care',
         theme: ThemeData(
           scaffoldBackgroundColor: const Color.fromARGB(25, 0, 0, 0),
-          primarySwatch: Colors.blue,
+          primarySwatch: MaterialColor(0xFF1AC0C6, color),
           visualDensity: VisualDensity.adaptivePlatformDensity,
           buttonTheme: const ButtonThemeData(
-            buttonColor: Color.fromRGBO(26, 192, 198, 1),
+            buttonColor: Color(0xFF1AC0C6),
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
@@ -54,11 +65,17 @@ class MyApp extends StatelessWidget {
             filled: true,
             fillColor: Colors.white,
             enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(15),
+              ),
               borderSide: BorderSide(
                 color: Colors.white,
               ),
             ),
             focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(15),
+              ),
               borderSide: BorderSide(
                 color: Color.fromRGBO(26, 192, 198, 0.42),
               ),

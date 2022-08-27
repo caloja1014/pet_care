@@ -12,6 +12,7 @@ class ConnectionWrapper extends GetConnect {
       Decoder<T>? decoder,
       Progress? uploadProgress}) {
     // TODO: implement patch
+    // ignore: unnecessary_brace_in_string_interps
     return super.patch("${ROOT_URL}${url}", body, contentType, headers, query,
         decoder, uploadProgress);
   }
