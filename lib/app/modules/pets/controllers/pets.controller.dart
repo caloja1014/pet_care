@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pet_care/app/widgets/pet_avatar.widget.dart';
-import 'package:pet_care/app/widgets/register_form.widget.dart';
+import 'package:pet_care/app/widgets/form_field.widget.dart';
+import 'package:pet_care/app/widgets/date_form_field.widget.dart';
 import 'package:pet_care/config/config.dart' as config;
 
 class PetsController extends GetxController {
   //TODO: Implement PetsController
+  final _petFormKey = GlobalKey<FormState>();
+  final nombreFocus = FocusNode();
+  final razaFocus = FocusNode();
+  final edadFocus = FocusNode();
+
+  DateTime date = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+
   final ENV = config.ENV;
   // ignore: non_constant_identifier_names
   final count = 0.obs;
+
+  @override
+  void dispose() {
+    nombreFocus.dispose();
+    razaFocus.dispose();
+    edadFocus.dispose();
+    super.dispose();
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -57,6 +74,7 @@ class PetsController extends GetxController {
               ),
               ElevatedButton(
                 onPressed: () {
+                  Navigator.pop(context);
                   displayRegisterPetForm(context);
                 },
                 style: ElevatedButton.styleFrom(
@@ -77,13 +95,49 @@ class PetsController extends GetxController {
   displayRegisterPetForm(BuildContext context) {
     showDialog(
       context: context,
-      barrierColor: Colors.white60,
+      barrierColor: Colors.white70,
       builder: (BuildContext context) {
         return AlertDialog(
           elevation: 0,
           backgroundColor: Colors.transparent,
           content:
-            RegisterForm()
+              Center(
+                child:
+                Form(
+                  key: _petFormKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: CustomFormField(
+                          focusNode: nombreFocus,
+                          text: "Nombre",
+                        ),
+                      ),
+                      Padding(padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: CustomFormField(
+                          focusNode: razaFocus,
+                          text: "Raza",
+                        ),
+                      ),
+                      Padding(padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: DateFormField(
+                          focusNode: edadFocus,
+                        )
+                      ),
+                      Padding(padding: const EdgeInsets.symmetric(vertical: 16.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if(_petFormKey.currentState!.validate()) {
+                                print("Todo ok");
+                              }
+                            },
+                            child: Text("Guardar"),
+                          ))
+                    ],
+                  ),
+                )
+              )
         );
       },
     );

@@ -17,6 +17,7 @@ class RegisterFormState extends State<RegisterForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text("Nombre"),
           TextFormField(
             validator: (value) {
               if(value == null || value.isEmpty) {
