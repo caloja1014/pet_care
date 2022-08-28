@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
     800: const Color.fromRGBO(26, 192, 198, 1),
     900: const Color.fromRGBO(26, 192, 198, 1),
   };
+  final primaryColor = const Color.fromRGBO(26, 192, 198, 1);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,8 +44,25 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: const Color.fromARGB(25, 0, 0, 0),
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
-          buttonTheme: const ButtonThemeData(
-            buttonColor: Color(0xFF1AC0C6),
+          buttonTheme: ButtonThemeData(
+            buttonColor: primaryColor,
+          ),
+          textTheme: TextTheme(
+            titleLarge: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: primaryColor,
+            ),
+            titleMedium: TextStyle(
+              // fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: primaryColor,
+            ),
+            titleSmall: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: primaryColor,
+            ),
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
@@ -53,8 +71,9 @@ class MyApp extends StatelessWidget {
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
-                primary: const Color.fromRGBO(26, 192, 198, 1),
+                primary: primaryColor,
                 minimumSize: const Size(180, 50),
+                maximumSize:const Size(180, 50) ,
                 // fixedSize: const Size(1200, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
