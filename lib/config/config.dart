@@ -7,6 +7,7 @@ const Map<String, dynamic> ENV = {
       "backPage": 'assets/images/back_page.png',
       "OWNER": 'assets/images/owner.png',
       "PET_SHOP": 'assets/images/pet_shop.png',
+      "PET": 'assets/images/pet.png',
     }
   }
 };
