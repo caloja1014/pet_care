@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pet_care/app/widgets/pet_avatar.widget.dart';
+import 'package:pet_care/app/widgets/register_form.widget.dart';
 import 'package:pet_care/config/config.dart' as config;
 
 class PetsController extends GetxController {
@@ -54,8 +55,35 @@ class PetsController extends GetxController {
                   text: 'Perro',
                 ),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  displayRegisterPetForm(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(20),
+                  primary: Colors.blue,
+                  onPrimary: Colors.white,
+                ),
+                child: const Icon(Icons.add, color: Colors.white),
+              )
             ],
           ),
+        );
+      },
+    );
+  }
+
+  displayRegisterPetForm(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.white60,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          content:
+            RegisterForm()
         );
       },
     );

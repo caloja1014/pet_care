@@ -8,8 +8,6 @@ import '../modules/pets/bindings/pets.binding.dart';
 import '../modules/pets/views/pets.view.dart';
 import '../modules/register/bindings/register.binding.dart';
 import '../modules/register/views/register.view.dart';
-import '../modules/register_pet/bindings/register_pet.binding.dart';
-import '../modules/register_pet/views/register_pet.view.dart';
 
 part 'app_routes.dart';
 
@@ -33,11 +31,6 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
-    ),
-    GetPage(
-      name: _Paths.REGISTER_PET,
-      page: () => RegisterPetView(),
-      binding: RegisterPetBinding(),
     ),
     GetPage(
       name: _Paths.PETS,

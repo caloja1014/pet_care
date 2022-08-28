@@ -20,7 +20,9 @@ class PetsView extends GetView<PetsController> {
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  controller.displayRegisterPetForm(context);
+                },
                 child: const Text(
                   'Actualizar Perfil',
                   style: const TextStyle(
