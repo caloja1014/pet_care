@@ -18,6 +18,7 @@ class RegisterAvatar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CircleAvatar(
+            backgroundColor:const  Color.fromRGBO(26, 192, 198, 1),
             radius: height * 0.08,
             child: Image.asset(
               name,
