@@ -52,7 +52,7 @@ class AppPages {
       page: () => RegisterLocalVetView(),
       binding: RegisterLocalVetBinding(),
     ),
-    GetPage(
+        GetPage(
       name: _Paths.REGISTER_PET,
       page: () => RegisterPetView(),
       binding: RegisterPetBinding(),
