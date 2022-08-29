@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   google_fonts: ^3.0.1
-  image_picker: ^0.8.5+3
+  intl: ^0.17.0
 get_cli:
   separator: "."
 
@@ -67,6 +67,7 @@ flutter:
     - assets/images/back_page.png
     - assets/images/owner.png
     - assets/images/pet_shop.png
+    - assets/images/pet.png
     - assets/images/product1.png
     - assets/images/product2.jpeg
     - assets/images/product3.jpeg
