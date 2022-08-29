@@ -57,7 +57,7 @@ class RegisterProductVetView extends GetView<RegisterProductVetController> {
                         width: textFormFieldWidth,
                         child: TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Cantidad',
+                            hintText: 'Precio',
                           ),
                         ),
                       ),
@@ -82,6 +82,7 @@ class RegisterProductVetView extends GetView<RegisterProductVetController> {
               child: ElevatedButton(
                 onPressed: () {
                   // Get.toNamed('/register_local_vet_address');
+                  print("Se ha añadido");
                 },
                 child: const Text(
                   'Añadir',

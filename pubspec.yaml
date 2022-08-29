@@ -37,6 +37,7 @@ dependencies:
   get: ^4.6.5
   google_fonts: ^3.0.1
   intl: ^0.17.0
+  image_picker: ^0.8.5+3
 get_cli:
   separator: "."
 
