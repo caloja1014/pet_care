@@ -12,6 +12,8 @@ import '../modules/register/bindings/register.binding.dart';
 import '../modules/register/views/register.view.dart';
 import '../modules/register_local_vet/bindings/register_local_vet.binding.dart';
 import '../modules/register_local_vet/views/register_local_vet.view.dart';
+import '../modules/register_pet_owner/bindings/register_pet_owner.binding.dart';
+import '../modules/register_pet_owner/views/register_pet_owner.view.dart';
 
 part 'app_routes.dart';
 
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.REGISTER_PET,
       page: () => RegisterPetView(),
       binding: RegisterPetBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTER_PET_OWNER,
+      page: () => RegisterPetOwnerView(),
+      binding: RegisterPetOwnerBinding(),
     ),
   ];
 }
