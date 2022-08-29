@@ -25,4 +25,5 @@ abstract class _Paths {
   static const REGISTER_PET_OWNER = '/register-pet-owner';
   static const REGISTER_PRODUCT_VET = '/register-product-vet';
   static const PRODUCTS = '/products';
+
 }
