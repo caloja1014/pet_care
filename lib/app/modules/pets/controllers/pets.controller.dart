@@ -75,7 +75,7 @@ class PetsController extends GetxController {
                           height: Get.height,
                           text: 'Perro',
                         ),
-                        
+
                       ],
                     ),
                   ),
@@ -106,6 +106,10 @@ class PetsController extends GetxController {
 
   displayRegisterPetForm(BuildContext context) {
     print("Registrar Mascota");
+  }
+
+  displayUpdateProfileForm(BuildContext context) {
+    print("Actualizar Perfil");
   }
 
   void increment() => count.value++;

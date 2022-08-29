@@ -10,6 +10,10 @@ class PetsView extends GetView<PetsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Perfil"),
+        backgroundColor: Color.fromRGBO(26, 192, 198, 1),
+      ),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -21,7 +25,7 @@ class PetsView extends GetView<PetsController> {
               padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: ElevatedButton(
                 onPressed: () {
-                  controller.displayRegisterPetForm(context);
+                  controller.displayUpdateProfileForm(context);
                 },
                 child: const Text(
                   'Actualizar Perfil',
