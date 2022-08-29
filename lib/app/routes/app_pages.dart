@@ -8,6 +8,8 @@ import '../modules/pets/bindings/pets.binding.dart';
 import '../modules/pets/views/pets.view.dart';
 import '../modules/register-pet/bindings/register_pet.binding.dart';
 import '../modules/register-pet/views/register_pet.view.dart';
+import '../modules/products/bindings/products.binding.dart';
+import '../modules/products/views/products.view.dart';
 import '../modules/register/bindings/register.binding.dart';
 import '../modules/register/views/register.view.dart';
 import '../modules/register_local_vet/bindings/register_local_vet.binding.dart';
@@ -64,6 +66,11 @@ class AppPages {
       name: _Paths.REGISTER_PRODUCT_VET,
       page: () => RegisterProductVetView(),
       binding: RegisterProductVetBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCTS,
+      page: () => ProductsView(),
+      binding: ProductsBinding(),
     ),
   ];
 }
