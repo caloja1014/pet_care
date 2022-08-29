@@ -6,6 +6,8 @@ import '../modules/login/bindings/login.binding.dart';
 import '../modules/login/views/login.view.dart';
 import '../modules/pets/bindings/pets.binding.dart';
 import '../modules/pets/views/pets.view.dart';
+import '../modules/register-pet/bindings/register_pet.binding.dart';
+import '../modules/register-pet/views/register_pet.view.dart';
 import '../modules/register/bindings/register.binding.dart';
 import '../modules/register/views/register.view.dart';
 import '../modules/register_local_vet/bindings/register_local_vet.binding.dart';
@@ -41,8 +43,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.REGISTER_LOCAL_VET,
-      page: () =>  RegisterLocalVetView(),
+      page: () => RegisterLocalVetView(),
       binding: RegisterLocalVetBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTER_PET,
+      page: () => RegisterPetView(),
+      binding: RegisterPetBinding(),
     ),
   ];
 }

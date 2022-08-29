@@ -6,13 +6,17 @@ class CustomTextField extends StatelessWidget {
   final obscureText;
   final maxLines;
   final maxLength;
+  final controller;
+  final function;
   const CustomTextField({
     Key? key,
     this.textLabel,
     this.validator,
+    this.controller,
     this.obscureText = false,
     this.maxLines = 1,
     this.maxLength,
+    this.function,
   }) : super(key: key);
 
   @override
@@ -33,14 +37,16 @@ class CustomTextField extends StatelessWidget {
           child: TextFormField(
             maxLength: maxLength,
             maxLines: maxLines,
+            controller: controller,
             minLines: 1,
+            onTap: function,
             decoration: const InputDecoration(
               fillColor: Color(0xFFF3F3F3),
             ),
             obscureText: obscureText,
             validator: validator,
           ),
-        )
+        ),
       ],
     );
   }

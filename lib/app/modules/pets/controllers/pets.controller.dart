@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pet_care/app/widgets/pet_avatar.widget.dart';
-import 'package:pet_care/app/widgets/form_field.widget.dart';
-import 'package:pet_care/app/widgets/date_form_field.widget.dart';
 import 'package:pet_care/config/config.dart' as config;
 
 class PetsController extends GetxController {
   //TODO: Implement PetsController
-  final _petFormKey = GlobalKey<FormState>();
   final nombreFocus = FocusNode();
   final razaFocus = FocusNode();
   final edadFocus = FocusNode();
@@ -108,53 +105,7 @@ class PetsController extends GetxController {
   }
 
   displayRegisterPetForm(BuildContext context) {
-    showDialog(
-      context: context,
-      // barrierColor: Colors.white70,
-      builder: (BuildContext context) {
-        return AlertDialog(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            content: Center(
-                child: Form(
-              key: _petFormKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    child: CustomFormField(
-                      focusNode: nombreFocus,
-                      text: "Nombre",
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    child: CustomFormField(
-                      focusNode: razaFocus,
-                      text: "Raza",
-                    ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      child: DateFormField(
-                        focusNode: edadFocus,
-                      )),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (_petFormKey.currentState!.validate()) {
-                            print("Todo ok");
-                          }
-                        },
-                        child: Text("Guardar"),
-                      ))
-                ],
-              ),
-            )));
-      },
-    );
+    print("Registrar Mascota");
   }
 
   void increment() => count.value++;
