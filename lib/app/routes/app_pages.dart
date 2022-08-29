@@ -8,6 +8,8 @@ import '../modules/register/bindings/register.binding.dart';
 import '../modules/register/views/register.view.dart';
 import '../modules/register_local_vet/bindings/register_local_vet.binding.dart';
 import '../modules/register_local_vet/views/register_local_vet.view.dart';
+import '../modules/register_product_vet/bindings/register_product_vet.binding.dart';
+import '../modules/register_product_vet/views/register_product_vet.view.dart';
 
 part 'app_routes.dart';
 
@@ -34,8 +36,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.REGISTER_LOCAL_VET,
-      page: () =>  RegisterLocalVetView(),
+      page: () => RegisterLocalVetView(),
       binding: RegisterLocalVetBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTER_PRODUCT_VET,
+      page: () => RegisterProductVetView(),
+      binding: RegisterProductVetBinding(),
     ),
   ];
 }
