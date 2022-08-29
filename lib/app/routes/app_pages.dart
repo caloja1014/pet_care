@@ -16,7 +16,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.REGISTER_LOCAL_VET;
+  static const INITIAL = Routes.PETS;
 
   static final routes = [
     GetPage(

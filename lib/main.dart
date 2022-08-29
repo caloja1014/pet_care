@@ -91,6 +91,14 @@ class MyApp extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(15),
+              ),
+              borderSide: BorderSide(
+                color: Colors.red,
+              ),
+            ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(15),

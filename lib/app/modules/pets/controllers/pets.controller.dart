@@ -12,7 +12,8 @@ class PetsController extends GetxController {
   final razaFocus = FocusNode();
   final edadFocus = FocusNode();
 
-  DateTime date = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  DateTime date =
+      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
 
   final ENV = config.ENV;
   // ignore: non_constant_identifier_names
@@ -50,27 +51,41 @@ class PetsController extends GetxController {
           elevation: 0,
           backgroundColor: Colors.transparent,
           content: Column(
-            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisSize: MainAxisSize.max,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 20),
-                child:
-                  PetAvatar(
-                    name: ENV["ASSETS"]['IMAGES']['PET'],
-                    height: Get.height,
-                    text: 'Perro',
-                  ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 20),
-                child:
-                PetAvatar(
-                  name: ENV["ASSETS"]['IMAGES']['PET'],
-                  height: Get.height,
-                  text: 'Perro',
+              Container(
+                alignment: Alignment.center,
+                // height: Get.height * 0.8,
+                constraints: BoxConstraints(
+                  maxHeight: Get.height * 0.8,
                 ),
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Center(
+                    child: Wrap(
+                      spacing: 40,
+                      runSpacing: 30,
+                      alignment: WrapAlignment.center,
+                      children: [
+                        PetAvatar(
+                          name: ENV["ASSETS"]['IMAGES']['PET'],
+                          height: Get.height,
+                          text: 'Perro',
+                        ),
+                        PetAvatar(
+                          name: ENV["ASSETS"]['IMAGES']['PET'],
+                          height: Get.height,
+                          text: 'Perro',
+                        ),
+                        
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
               ),
               ElevatedButton(
                 onPressed: () {
@@ -95,50 +110,49 @@ class PetsController extends GetxController {
   displayRegisterPetForm(BuildContext context) {
     showDialog(
       context: context,
-      barrierColor: Colors.white70,
+      // barrierColor: Colors.white70,
       builder: (BuildContext context) {
         return AlertDialog(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          content:
-              Center(
-                child:
-                Form(
-                  key: _petFormKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(padding: const EdgeInsets.symmetric(vertical: 16.0),
-                        child: CustomFormField(
-                          focusNode: nombreFocus,
-                          text: "Nombre",
-                        ),
-                      ),
-                      Padding(padding: const EdgeInsets.symmetric(vertical: 16.0),
-                        child: CustomFormField(
-                          focusNode: razaFocus,
-                          text: "Raza",
-                        ),
-                      ),
-                      Padding(padding: const EdgeInsets.symmetric(vertical: 16.0),
-                        child: DateFormField(
-                          focusNode: edadFocus,
-                        )
-                      ),
-                      Padding(padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if(_petFormKey.currentState!.validate()) {
-                                print("Todo ok");
-                              }
-                            },
-                            child: Text("Guardar"),
-                          ))
-                    ],
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            content: Center(
+                child: Form(
+              key: _petFormKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: CustomFormField(
+                      focusNode: nombreFocus,
+                      text: "Nombre",
+                    ),
                   ),
-                )
-              )
-        );
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: CustomFormField(
+                      focusNode: razaFocus,
+                      text: "Raza",
+                    ),
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      child: DateFormField(
+                        focusNode: edadFocus,
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_petFormKey.currentState!.validate()) {
+                            print("Todo ok");
+                          }
+                        },
+                        child: Text("Guardar"),
+                      ))
+                ],
+              ),
+            )));
       },
     );
   }
