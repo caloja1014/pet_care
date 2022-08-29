@@ -4,6 +4,8 @@ import '../modules/home/bindings/home.binding.dart';
 import '../modules/home/views/home.view.dart';
 import '../modules/login/bindings/login.binding.dart';
 import '../modules/login/views/login.view.dart';
+import '../modules/products/bindings/products.binding.dart';
+import '../modules/products/views/products.view.dart';
 import '../modules/register/bindings/register.binding.dart';
 import '../modules/register/views/register.view.dart';
 import '../modules/register_local_vet/bindings/register_local_vet.binding.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.REGISTER_PRODUCT_VET,
       page: () => RegisterProductVetView(),
       binding: RegisterProductVetBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCTS,
+      page: () => ProductsView(),
+      binding: ProductsBinding(),
     ),
   ];
 }

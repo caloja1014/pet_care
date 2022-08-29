@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/register_product_vet.controller.dart';
+import 'package:image_picker/image_picker.dart';
 
 class RegisterProductVetView extends GetView<RegisterProductVetController> {
   final textFormFieldWidth = Get.width * 0.7;
   RegisterProductVetView({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormState>();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class RegisterProductVetView extends GetView<RegisterProductVetController> {
               height: 60,
               width: double.infinity,
               child: Text(
-                'Registro local',
+                'Registro de producto',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
@@ -32,6 +34,15 @@ class RegisterProductVetView extends GetView<RegisterProductVetController> {
                   key: _formKey,
                   child: Column(
                     children: [
+                      Container(
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        width: textFormFieldWidth,
+                        child: TextFormField(
+                          decoration: const InputDecoration(
+                            hintText: 'ID',
+                          ),
+                        ),
+                      ),
                       Container(
                         padding: const EdgeInsets.only(top: 10, bottom: 10),
                         width: textFormFieldWidth,
@@ -59,6 +70,7 @@ class RegisterProductVetView extends GetView<RegisterProductVetController> {
                           ),
                         ),
                       ),
+
                     ],
                   ),
                   
@@ -76,6 +88,7 @@ class RegisterProductVetView extends GetView<RegisterProductVetController> {
                 ),
               ),
             ),
+            
           ],
         ),
       ),
@@ -83,3 +96,4 @@ class RegisterProductVetView extends GetView<RegisterProductVetController> {
   }
 
 }
+
