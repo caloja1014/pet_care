@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pet_care/app/routes/app_pages.dart';
 
 import '../controllers/login.controller.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -50,7 +51,9 @@ class LoginView extends GetView<LoginController> {
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.PETS);
+                },
                 child: const Text(
                   'Iniciar sesión',
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pet_care/app/routes/app_pages.dart';
 
 import '../controllers/pets.controller.dart';
 
@@ -10,10 +11,6 @@ class PetsView extends GetView<PetsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Perfil"),
-        backgroundColor: Color.fromRGBO(26, 192, 198, 1),
-      ),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -21,35 +18,35 @@ class PetsView extends GetView<PetsController> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 20),
-              child: ElevatedButton(
-                onPressed: () {
-                  controller.displayUpdateProfileForm(context);
-                },
-                child: const Text(
-                  'Actualizar Perfil',
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+            homeButton(
+              'Actualizar Perfil',
+              () {},
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 20),
-              child: ElevatedButton(
-                onPressed: () {
-                  controller.displayPets(context);
-                },
-                child: const Text(
-                  'Mostrar Mascotas',
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+            homeButton('Mostrar mascotas', () {
+              controller.displayPets(context);
+            }),
+            homeButton(
+              'Mostrar productos',
+              () {
+                Get.toNamed(Routes.PRODUCTS);
+              },
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget homeButton(String text, onPressed) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20, bottom: 20),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.white,
+          ),
         ),
       ),
     );
