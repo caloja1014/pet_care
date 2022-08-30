@@ -56,7 +56,7 @@ class PetsController extends GetxController {
                 alignment: Alignment.center,
                 // height: Get.height * 0.8,
                 constraints: BoxConstraints(
-                  maxHeight: Get.height * 0.8,
+                  maxHeight: Get.height * 0.6,
                 ),
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
