@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pet_care/app/routes/app_pages.dart';
 import 'package:pet_care/app/widgets/pet_avatar.widget.dart';
 import 'package:pet_care/config/config.dart' as config;
 
@@ -105,7 +106,7 @@ class PetsController extends GetxController {
   }
 
   displayRegisterPetForm(BuildContext context) {
-    print("Registrar Mascota");
+    Get.toNamed(Routes.REGISTER_PET);
   }
 
   displayUpdateProfileForm(BuildContext context) {

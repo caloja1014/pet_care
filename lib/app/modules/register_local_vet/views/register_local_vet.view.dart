@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -13,20 +12,25 @@ class RegisterLocalVetView extends GetView<RegisterLocalVetController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        title: const Text("Registro"),
+        backgroundColor: const Color.fromRGBO(26, 192, 198, 1),
+        centerTitle: true,
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
         color: Colors.white,
         child: Column(
           children: [
-            Container(
-              alignment: Alignment.center,
-              height: 90,
-              width: double.infinity,
-              child: Text(
-                'Registro',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
+            const SizedBox(
+              height: 40,
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -124,7 +128,7 @@ class RegisterLocalVetView extends GetView<RegisterLocalVetController> {
   }
 
   Widget dropDownCustom(context) {
-    RxBool value = true.obs ;
+    RxBool value = true.obs;
     return Column(
       children: [
         Container(
@@ -149,26 +153,27 @@ class RegisterLocalVetView extends GetView<RegisterLocalVetController> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Container(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Obx(()=>DropdownButton<bool>(
-                dropdownColor: const Color(0xFFF3F3F3),
-                elevation: 8,
-                isExpanded: true,
-                borderRadius: BorderRadius.circular(10),
-                underline: Container(),
-                value: value.value,
-                items: [true, false].map<DropdownMenuItem<bool>>((bool value) {
-                  return DropdownMenuItem<bool>(
-                    value: value,
-                    child: Text(value ? 'Veterinaria' : 'Local'),
-                  );
-                }).toList(),
-                onChanged: (value2) {
-                  value.value = value2!;
-                
-                },
-              ),)
-            ),
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Obx(
+                  () => DropdownButton<bool>(
+                    dropdownColor: const Color(0xFFF3F3F3),
+                    elevation: 8,
+                    isExpanded: true,
+                    borderRadius: BorderRadius.circular(10),
+                    underline: Container(),
+                    value: value.value,
+                    items:
+                        [true, false].map<DropdownMenuItem<bool>>((bool value) {
+                      return DropdownMenuItem<bool>(
+                        value: value,
+                        child: Text(value ? 'Veterinaria' : 'Local'),
+                      );
+                    }).toList(),
+                    onChanged: (value2) {
+                      value.value = value2!;
+                    },
+                  ),
+                )),
           ),
         ),
       ],

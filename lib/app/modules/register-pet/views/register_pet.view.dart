@@ -14,20 +14,25 @@ class RegisterPetView extends GetView<RegisterPetController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        title: const Text("Registrar Mascota"),
+        backgroundColor: const Color.fromRGBO(26, 192, 198, 1),
+        centerTitle: true,
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
         color: Colors.white,
         child: Column(
           children: [
-            Container(
-              alignment: Alignment.center,
-              height: 90,
-              width: double.infinity,
-              child: Text(
-                'Registro de Mascota',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
+            SizedBox(
+              height: 40,
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -70,12 +75,14 @@ class RegisterPetView extends GetView<RegisterPetController> {
                           textLabel: 'Fecha de nacimiento',
                           controller: _date,
                           function: () async {
-                            DateTime? picked_date = await showDatePicker(context: context,
+                            DateTime? picked_date = await showDatePicker(
+                                context: context,
                                 initialDate: DateTime.now(),
                                 firstDate: DateTime(1900),
                                 lastDate: DateTime.now());
-                            if (picked_date != null){
-                              _date.text = DateFormat('yyyy-MM-dd').format(picked_date);
+                            if (picked_date != null) {
+                              _date.text =
+                                  DateFormat('yyyy-MM-dd').format(picked_date);
                             }
                           },
                           validator: (value) {

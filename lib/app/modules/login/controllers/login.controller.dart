@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pet_care/app/routes/app_pages.dart';
 import 'package:pet_care/app/widgets/register_avatar.widget.dart';
 import 'package:pet_care/config/config.dart' as config;
 
@@ -41,7 +42,7 @@ class LoginController extends GetxController {
                 name: ENV["ASSETS"]['IMAGES']['OWNER'],
                 text: 'Dueño',
                 onTap: () {
-                  print('Dueño');
+                  Get.toNamed(Routes.REGISTER_PET_OWNER);
                 },
               ),
               const SizedBox(
@@ -52,7 +53,7 @@ class LoginController extends GetxController {
                 name: ENV["ASSETS"]['IMAGES']['PET_SHOP'],
                 text: 'Local o Veterinaria',
                 onTap: () {
-                  print('Local o Veterinaria');
+                  Get.toNamed(Routes.REGISTER_LOCAL_VET);
                 },
               ),
             ],

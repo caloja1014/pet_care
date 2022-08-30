@@ -12,20 +12,25 @@ class RegisterPetOwnerView extends GetView<RegisterPetOwnerController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        title: const Text("Registro de Dueño de Mascota"),
+        backgroundColor: const Color.fromRGBO(26, 192, 198, 1),
+        centerTitle: true,
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
         color: Colors.white,
         child: Column(
           children: [
-            Container(
-              alignment: Alignment.center,
-              height: 90,
-              width: double.infinity,
-              child: Text(
-                'Registro de Dueño de Mascota',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
+            const SizedBox(
+              height: 40,
             ),
             Expanded(
               child: SingleChildScrollView(
