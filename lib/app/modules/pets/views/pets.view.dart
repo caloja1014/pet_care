@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pet_care/app/modules/register_pet_owner/views/register_pet_owner.view.dart';
 import 'package:pet_care/app/routes/app_pages.dart';
 
 import '../controllers/pets.controller.dart';
@@ -20,7 +21,9 @@ class PetsView extends GetView<PetsController> {
           children: [
             homeButton(
               'Actualizar Perfil',
-              () {},
+              () {
+                Get.toNamed(Routes.UPDATE_PET_OWNER);
+              },
             ),
             homeButton('Mostrar mascotas', () {
               controller.displayPets(context);
@@ -31,6 +34,9 @@ class PetsView extends GetView<PetsController> {
                 Get.toNamed(Routes.PRODUCTS);
               },
             ),
+            homeButton('Salir', () {
+              Get.toNamed(Routes.LOGIN);
+            }),
           ],
         ),
       ),
