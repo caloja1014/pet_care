@@ -1,6 +1,6 @@
 const Map<String, dynamic> ENV = {
   "API": {
-    "ROOT_PATH": "localhost:3000",
+    "ROOT_PATH": "http://localhost:3000",
   },
   "ASSETS": {
     "IMAGES":{

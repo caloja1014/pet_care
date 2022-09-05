@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pet_care/app/routes/app_pages.dart';
 import 'package:pet_care/app/widgets/custom_text_field.dart';
 
 import '../controllers/register_local_vet.controller.dart';
@@ -9,6 +10,8 @@ class RegisterLocalVetView extends GetView<RegisterLocalVetController> {
   RegisterLocalVetView({Key? key}) : super(key: key);
   final vgap = Get.height * 0.02;
   final _formKey = GlobalKey<FormState>();
+  Map<String, TextEditingController> controllers = {};
+  RxBool value = true.obs;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,6 +57,26 @@ class RegisterLocalVetView extends GetView<RegisterLocalVetController> {
                             }
                             return null;
                           },
+                          controller: controllers.putIfAbsent(
+                            'name',
+                            () => TextEditingController(),
+                          ),
+                        ),
+                        SizedBox(
+                          height: vgap,
+                        ),
+                        CustomTextField(
+                          textLabel: 'RUC',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor ingrese el RUC';
+                            }
+                            return null;
+                          },
+                          controller: controllers.putIfAbsent(
+                            'ruc',
+                            () => TextEditingController(),
+                          ),
                         ),
                         SizedBox(
                           height: vgap,
@@ -69,6 +92,10 @@ class RegisterLocalVetView extends GetView<RegisterLocalVetController> {
 
                             return null;
                           },
+                          controller: controllers.putIfAbsent(
+                            'description',
+                            () => TextEditingController(),
+                          ),
                         ),
                         SizedBox(
                           height: vgap,
@@ -93,9 +120,12 @@ class RegisterLocalVetView extends GetView<RegisterLocalVetController> {
                             if (value == null || value.isEmpty) {
                               return 'Por favor ingrese una contraseña';
                             }
-
                             return null;
                           },
+                          controller: controllers.putIfAbsent(
+                            'password',
+                            () => TextEditingController(),
+                          ),
                         ),
                       ],
                     ),
@@ -111,9 +141,27 @@ class RegisterLocalVetView extends GetView<RegisterLocalVetController> {
                   if (_formKey.currentState!.validate()) {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
-                    );
+                    controller
+                        .postLocal(
+                      name: controllers['name']!.text,
+                      description: controllers['description']!.text,
+                      isVeterinary: value.value,
+                      ownerIdentification: controllers['ruc']!.text,
+                    )
+                        .then((value) {
+                      if (value.statusCode == 200) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text('Agregado correctamente')),
+                        );
+                        
+                        Get.toNamed(Routes.LOGIN);
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Error')),
+                        );
+                      }
+                    });
                   }
                 },
                 child: const Text(
@@ -128,7 +176,6 @@ class RegisterLocalVetView extends GetView<RegisterLocalVetController> {
   }
 
   Widget dropDownCustom(context) {
-    RxBool value = true.obs;
     return Column(
       children: [
         Container(

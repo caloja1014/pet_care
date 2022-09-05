@@ -11,10 +11,16 @@ class ConnectionWrapper extends GetConnect {
       Map<String, dynamic>? query,
       Decoder<T>? decoder,
       Progress? uploadProgress}) {
-    // TODO: implement patch
     // ignore: unnecessary_brace_in_string_interps
-    return super.patch("${ROOT_URL}${url}", body, contentType, headers, query,
-        decoder, uploadProgress);
+    return super.patch(
+      "${ROOT_URL}${url}",
+      body,
+      contentType: contentType,
+      headers: headers,
+      query: query,
+      decoder: decoder,
+      uploadProgress: uploadProgress,
+    );
   }
 
   @override
@@ -24,9 +30,17 @@ class ConnectionWrapper extends GetConnect {
       Map<String, dynamic>? query,
       Decoder<T>? decoder,
       Progress? uploadProgress}) {
-    // TODO: implement post
-    return super.post("${ROOT_URL}${url}", body, contentType, headers, query,
-        decoder, uploadProgress);
+    print("prueba");
+    print("${ROOT_URL}${url}");
+    return super.post(
+      "${ROOT_URL}${url}",
+      body,
+      contentType: contentType,
+      headers: headers,
+      query: query,
+      decoder: decoder,
+      uploadProgress: uploadProgress,
+    );
   }
 
   @override
@@ -35,8 +49,13 @@ class ConnectionWrapper extends GetConnect {
       String? contentType,
       Map<String, dynamic>? query,
       Decoder<T>? decoder}) {
-    // TODO: implement get
-    return super.get("${ROOT_URL}${url}", headers, contentType, query, decoder);
+    return super.get(
+      "${ROOT_URL}${url}",
+      contentType: contentType,
+      headers: headers,
+      query: query,
+      decoder: decoder,
+    );
   }
 
   @override
@@ -47,7 +66,14 @@ class ConnectionWrapper extends GetConnect {
       Decoder<T>? decoder,
       Progress? uploadProgress}) {
     // TODO: implement put
-    return super.put("${ROOT_URL}${url}", body, contentType, headers, query,
-        decoder, uploadProgress);
+    return super.put(
+      "${ROOT_URL}${url}",
+      body,
+      contentType: contentType,
+      headers: headers,
+      query: query,
+      decoder: decoder,
+      uploadProgress: uploadProgress,
+    );
   }
 }
