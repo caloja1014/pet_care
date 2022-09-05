@@ -59,6 +59,9 @@ class PetsController extends GetxController {
                             itemCount: snapshot.data.length,
                             itemBuilder: (context, i) {
                               return ListTile(
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                                ),
                                 leading: CircleAvatar(
                                   backgroundImage: AssetImage( 
                                     snapshot.data[i].image
