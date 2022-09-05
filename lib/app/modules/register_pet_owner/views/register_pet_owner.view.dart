@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pet_care/app/routes/app_pages.dart';
 
 import '../../../widgets/custom_text_field.dart';
 import '../controllers/register_pet_owner.controller.dart';
@@ -9,6 +10,8 @@ class RegisterPetOwnerView extends GetView<RegisterPetOwnerController> {
   RegisterPetOwnerView({Key? key}) : super(key: key);
   final vgap = Get.height * 0.02;
   final _formKey = GlobalKey<FormState>();
+  Map<String, TextEditingController> controllers = {};
+  RxBool value = true.obs;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,10 +50,11 @@ class RegisterPetOwnerView extends GetView<RegisterPetOwnerController> {
                           maxLength: 10,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Por favor, ingrese un nombre';
+                              return 'Por favor, ingrese su cédula';
                             }
                             return null;
                           },
+                          controller: controllers.putIfAbsent('identification', () => TextEditingController()),
                         ),
                         SizedBox(
                           height: vgap,
@@ -61,9 +65,9 @@ class RegisterPetOwnerView extends GetView<RegisterPetOwnerController> {
                             if (value == null || value.isEmpty) {
                               return 'Por favor, ingrese un nombre';
                             }
-
                             return null;
                           },
+                          controller: controllers.putIfAbsent('name', () => TextEditingController()),
                         ),
                         SizedBox(
                           height: vgap,
@@ -74,9 +78,9 @@ class RegisterPetOwnerView extends GetView<RegisterPetOwnerController> {
                             if (value == null || value.isEmpty) {
                               return 'Por favor, ingrese un apellido';
                             }
-
                             return null;
                           },
+                          controller: controllers.putIfAbsent('lastName', () => TextEditingController()),
                         ),
                       ],
                     ),
@@ -92,9 +96,22 @@ class RegisterPetOwnerView extends GetView<RegisterPetOwnerController> {
                   if (_formKey.currentState!.validate()) {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
-                    );
+                    controller.postPetOwner(
+                        identification: controllers['identification']!.text,
+                        name: controllers['name']!.text,
+                        lastName: controllers['lastName']!.text)
+                    .then((value) {
+                      if (value.statusCode == 200){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Agregado correctamente')),
+                        );
+                        Get.toNamed(Routes.PETS);
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Error')),
+                        );
+                      }
+                    });
                   }
                 },
                 child: const Text(
