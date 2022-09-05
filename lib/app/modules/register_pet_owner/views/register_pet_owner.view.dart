@@ -8,10 +8,10 @@ import '../controllers/register_pet_owner.controller.dart';
 
 class RegisterPetOwnerView extends GetView<RegisterPetOwnerController> {
   RegisterPetOwnerView({Key? key}) : super(key: key);
+  static String petownerId = '';
   final vgap = Get.height * 0.02;
   final _formKey = GlobalKey<FormState>();
   Map<String, TextEditingController> controllers = {};
-  RxBool value = true.obs;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,6 +94,7 @@ class RegisterPetOwnerView extends GetView<RegisterPetOwnerController> {
                 onPressed: () {
                   // Validate returns true if the form is valid, or false otherwise.
                   if (_formKey.currentState!.validate()) {
+                    petownerId = controllers['name']!.text;
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
                     controller.postPetOwner(

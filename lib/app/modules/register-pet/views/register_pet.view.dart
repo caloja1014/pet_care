@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'package:get/get.dart';
+import 'package:pet_care/app/modules/register_pet_owner/views/register_pet_owner.view.dart';
 
+import '../../../routes/app_pages.dart';
 import '../../../widgets/custom_text_field.dart';
 import '../controllers/register_pet.controller.dart';
 
@@ -10,6 +12,7 @@ class RegisterPetView extends GetView<RegisterPetController> {
   RegisterPetView({Key? key}) : super(key: key);
   final vgap = Get.height * 0.02;
   final _formKey = GlobalKey<FormState>();
+  Map<String, TextEditingController> controllers = {};
   TextEditingController _date = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -52,6 +55,7 @@ class RegisterPetView extends GetView<RegisterPetController> {
                             }
                             return null;
                           },
+                          controller: controllers.putIfAbsent('name', () => TextEditingController()),
                         ),
                         SizedBox(
                           height: vgap,
@@ -64,9 +68,9 @@ class RegisterPetView extends GetView<RegisterPetController> {
                             if (value == null || value.isEmpty) {
                               return 'Por favor, ingrese una raza';
                             }
-
                             return null;
                           },
+                          controller: controllers.putIfAbsent('breed', () => TextEditingController()),
                         ),
                         SizedBox(
                           height: vgap,
@@ -89,7 +93,6 @@ class RegisterPetView extends GetView<RegisterPetController> {
                             if (value == null || value.isEmpty) {
                               return 'Por favor, elija una fecha';
                             }
-
                             return null;
                           },
                         ),
@@ -107,9 +110,25 @@ class RegisterPetView extends GetView<RegisterPetController> {
                   if (_formKey.currentState!.validate()) {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
-                    );
+                    int pet_age = controller.calculateAge(DateTime.tryParse(_date.text));
+                    print(RegisterPetOwnerView.petownerId);
+                    controller.postPet(
+                        breed: controllers['breed']!.text,
+                        name: controllers['name']!.text,
+                        age: pet_age,
+                        petownerIdentification: RegisterPetOwnerView.petownerId)
+                    .then((value) {
+                      if (value.statusCode == 200) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Agregado Correctamente')),
+                        );
+                        Get.toNamed(Routes.PETS);
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Error')),
+                        );
+                      }
+                    });
                   }
                 },
                 child: const Text(
