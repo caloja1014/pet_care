@@ -45,15 +45,12 @@ class PetsController extends GetxController {
           elevation: 0,
           backgroundColor: Colors.transparent,
           content: Container(
-            alignment: Alignment.center,
+            width: double.maxFinite,
             // height: Get.height * 0.8,
             constraints: BoxConstraints(
               maxHeight: Get.height * 0.6,
             ),
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Expanded(
-                child: FutureBuilder(
+            child: FutureBuilder(
                     future: getPets(identification: RegisterPetOwnerView.petownerId),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.hasData) {
@@ -62,14 +59,18 @@ class PetsController extends GetxController {
                             itemCount: snapshot.data.length,
                             itemBuilder: (context, i) {
                               return ListTile(
-                                title: Text(snapshot.data[i].text),
+                                leading: CircleAvatar(
+                                  backgroundImage: AssetImage( 
+                                    snapshot.data[i].image
+                                  )),
+                                title: Text(snapshot.data[i].name + " - " + snapshot.data[i].age.toString() + " años"),
+                                tileColor: Colors.white,
                               );
                             });
                       } else {
                         return Center(child: CircularProgressIndicator());
                       }
-                    }),
-              ),
+                    }
             ),
           ),
         );
@@ -92,9 +93,10 @@ class PetsController extends GetxController {
       List<PetAvatar> pets = [];
       for (var p in json) {
         PetAvatar pet = PetAvatar(
-            name: ENV["ASSETS"]["IMAGES"]["PETS"],
+            image: ENV["ASSETS"]["IMAGES"]["PET"],
             height: Get.height * 0.8,
-            text: p['name']);
+            name: p['name'],
+            age: p['age']);
         pets.add(pet);
       }
       return pets;

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import '../../register_pet_owner/views/register_pet_owner.view.dart';
 import 'package:pet_care/app/routes/app_pages.dart';
 
 import '../controllers/pets.controller.dart';
@@ -19,13 +18,6 @@ class PetsView extends GetView<PetsController> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              RegisterPetOwnerView.petownerId,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              )
-            ),
             homeButton(
               'Actualizar Perfil',
               () {
