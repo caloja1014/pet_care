@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'package:get/get.dart';
-import 'package:pet_care/app/modules/register_pet_owner/views/register_pet_owner.view.dart';
+import '../../register_pet_owner/views/register_pet_owner.view.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../widgets/custom_text_field.dart';
@@ -111,7 +111,6 @@ class RegisterPetView extends GetView<RegisterPetController> {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
                     int pet_age = controller.calculateAge(DateTime.tryParse(_date.text));
-                    print(RegisterPetOwnerView.petownerId);
                     controller.postPet(
                         breed: controllers['breed']!.text,
                         name: controllers['name']!.text,
