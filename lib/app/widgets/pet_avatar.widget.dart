@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 class PetAvatar extends StatelessWidget {
   final height;
+  final image;
   final name;
-  final text;
+  final age;
 
-  const PetAvatar({Key? key, this.height, this.name, this.text})
+  const PetAvatar({Key? key, this.height, this.image, this.name, this.age})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class PetAvatar extends StatelessWidget {
           CircleAvatar(
             radius: height * 0.08,
             child: Image.asset(
-              name,
+              image,
               width: height * 0.08,
               height: height * 0.08,
             ),
@@ -27,7 +28,14 @@ class PetAvatar extends StatelessWidget {
             height: 10,
           ),
           Text(
-            text,
+            name,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          Text(
+            age,
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,
