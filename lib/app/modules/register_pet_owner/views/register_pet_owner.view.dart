@@ -94,7 +94,6 @@ class RegisterPetOwnerView extends GetView<RegisterPetOwnerController> {
                 onPressed: () {
                   // Validate returns true if the form is valid, or false otherwise.
                   if (_formKey.currentState!.validate()) {
-                    petownerId = controllers['identification']!.text;
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
                     controller.postPetOwner(
@@ -106,6 +105,7 @@ class RegisterPetOwnerView extends GetView<RegisterPetOwnerController> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Agregado correctamente')),
                         );
+                        petownerId = controllers['identification']!.text;
                         Get.toNamed(Routes.PETS);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
