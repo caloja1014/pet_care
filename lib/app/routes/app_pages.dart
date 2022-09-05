@@ -6,10 +6,10 @@ import '../modules/login/bindings/login.binding.dart';
 import '../modules/login/views/login.view.dart';
 import '../modules/pets/bindings/pets.binding.dart';
 import '../modules/pets/views/pets.view.dart';
-import '../modules/register-pet/bindings/register_pet.binding.dart';
-import '../modules/register-pet/views/register_pet.view.dart';
 import '../modules/products/bindings/products.binding.dart';
 import '../modules/products/views/products.view.dart';
+import '../modules/register-pet/bindings/register_pet.binding.dart';
+import '../modules/register-pet/views/register_pet.view.dart';
 import '../modules/register/bindings/register.binding.dart';
 import '../modules/register/views/register.view.dart';
 import '../modules/register_local_vet/bindings/register_local_vet.binding.dart';
@@ -18,6 +18,8 @@ import '../modules/register_pet_owner/bindings/register_pet_owner.binding.dart';
 import '../modules/register_pet_owner/views/register_pet_owner.view.dart';
 import '../modules/register_product_vet/bindings/register_product_vet.binding.dart';
 import '../modules/register_product_vet/views/register_product_vet.view.dart';
+import '../modules/update_pet_owner/bindings/update_pet_owner.binding.dart';
+import '../modules/update_pet_owner/views/update_pet_owner.view.dart';
 
 part 'app_routes.dart';
 
@@ -52,7 +54,7 @@ class AppPages {
       page: () => RegisterLocalVetView(),
       binding: RegisterLocalVetBinding(),
     ),
-        GetPage(
+    GetPage(
       name: _Paths.REGISTER_PET,
       page: () => RegisterPetView(),
       binding: RegisterPetBinding(),
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.PRODUCTS,
       page: () => ProductsView(),
       binding: ProductsBinding(),
+    ),
+    GetPage(
+      name: _Paths.UPDATE_PET_OWNER,
+      page: () => UpdatePetOwnerView(),
+      binding: UpdatePetOwnerBinding(),
     ),
   ];
 }

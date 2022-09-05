@@ -12,6 +12,7 @@ abstract class Routes {
   static const REGISTER_PET_OWNER = _Paths.REGISTER_PET_OWNER;
   static const REGISTER_PRODUCT_VET = _Paths.REGISTER_PRODUCT_VET;
   static const PRODUCTS = _Paths.PRODUCTS;
+  static const UPDATE_PET_OWNER = _Paths.UPDATE_PET_OWNER;
 }
 
 abstract class _Paths {
@@ -25,5 +26,5 @@ abstract class _Paths {
   static const REGISTER_PET_OWNER = '/register-pet-owner';
   static const REGISTER_PRODUCT_VET = '/register-product-vet';
   static const PRODUCTS = '/products';
-
+  static const UPDATE_PET_OWNER = '/update-pet-owner';
 }
