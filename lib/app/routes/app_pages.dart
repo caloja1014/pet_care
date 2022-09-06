@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/home/bindings/home.binding.dart';
 import '../modules/home/views/home.view.dart';
+import '../modules/locals_home/bindings/locals_home.binding.dart';
+import '../modules/locals_home/views/locals_home.view.dart';
 import '../modules/login/bindings/login.binding.dart';
 import '../modules/login/views/login.view.dart';
 import '../modules/pets/bindings/pets.binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.UPDATE_PET_OWNER,
       page: () => UpdatePetOwnerView(),
       binding: UpdatePetOwnerBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOCALS_HOME,
+      page: () => const LocalsHomeView(),
+      binding: LocalsHomeBinding(),
     ),
   ];
 }

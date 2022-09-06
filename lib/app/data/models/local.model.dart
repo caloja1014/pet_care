@@ -13,13 +13,14 @@ class Local {
   List<Service>? services;
 
   Local(
-      {this.id,
-      this.name,
-      this.latitude,
-      this.longitude,
-      this.description,
-      this.isVeterinary,
-      this.smallDescription,
+      {
+      required this.id,
+      required this.name,
+      required this.latitude,
+      required this.longitude,
+      required this.description,
+      required this.isVeterinary,
+      required this.smallDescription,
       this.inventory,
       this.services});
 
@@ -31,8 +32,8 @@ class Local {
     description = json['description'];
     isVeterinary = json['isVeterinary'];
     smallDescription = json['smallDescription'];
-    inventory = json['inventory'].cast<Inventory>();
-    services = json['services'].cast<Service>();
+    // inventory = json['inventory'].cast<Inventory>();
+    // services = json['services'].cast<Service>();
   }
 
   Map<String, dynamic> toJson() {
@@ -47,5 +48,9 @@ class Local {
     data['inventory'] = inventory;
     data['services'] = services;
     return data;
+  }
+  @override
+  String toString() {
+    return 'Local{id: $id, name: $name, latitude: $latitude, longitude: $longitude, description: $description, isVeterinary: $isVeterinary, smallDescription: $smallDescription, inventory: $inventory, services: $services}';
   }
 }

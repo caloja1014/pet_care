@@ -30,6 +30,10 @@ class PetsView extends GetView<PetsController> {
             homeButton('Mostrar mascotas', () {
               controller.displayPets(context);
             }),
+            homeButton('Mostrar locales', () {
+              Get.toNamed(Routes.LOCALS_HOME);
+            
+            }),
             homeButton(
               'Mostrar productos',
               () {
